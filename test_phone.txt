@@ -1,0 +1,32 @@
+id: 1
+surname: Ivanov
+name: Ivan
+patronymic: Ivanoc
+organisation: OOO TEST
+work_number: 8484841111
+mobile_number: 174569897
+----------------------------
+id: 2
+surname: Testov
+name: Test
+patronymic: Testovich
+organisation: OOO TEST
+work_number: 8484841111
+mobile_number: 174569897
+----------------------------
+id: 3
+surname: Testov
+name: Test
+patronymic: Testovich
+organisation: OOO TEST
+work_number: 8484841111
+mobile_number: 174569897
+----------------------------
+id: 4
+surname: Sveklov
+name: Grigorisy
+patronymic: Shiskovich
+organisation: OOO HOME
+work_number: 3232212312
+mobile_number: 231231313
+----------------------------
