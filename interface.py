@@ -5,6 +5,7 @@ from ast import literal_eval
 class Interface:
 
     def interface(self):
+        """Shows console interface that script can do"""
         self.back_work = File_working()
         print('| Hello you are using phone book! |')
         print('| if you want to see all information press 1 |')
@@ -16,6 +17,7 @@ class Interface:
         self.desision_maker(test)
 
     def desision_maker(self, value: int):
+        """Depending on what the user enters, the corresponding functions are executed."""
         try:
             value = int(value)
         except BaseException:

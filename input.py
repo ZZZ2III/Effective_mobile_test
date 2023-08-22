@@ -2,7 +2,8 @@ class File_working:
     def __init__(self):
         self.file = 'test_phone.txt'
 
-    def file_read_to_list(self):
+    def file_read_to_list(self) -> []:
+        """Parsing text file to show information"""
         with open(self.file, 'r') as f:
             data = f.readlines()
         total_list = []
@@ -22,12 +23,20 @@ class File_working:
         return total_list
 
     def show_all_persons(self):
+        """Printing parsed data from function file_read_to_list"""
         data = self.file_read_to_list()
         for i in data:
             for j in i:
                 print(j)
 
-    def create_new_contact_as_list(self, lst: []):
+    def create_new_contact_as_list(self, lst: []) -> {}:
+        """Creating user as with inputed list. Example test_user = [
+                            'surname: Testov1',
+                            'name: Test2',
+                            'patronymic: Testovich3',
+                            'organisation: OOO TEST4',
+                            'work_number: 84848411111',
+                            'mobile_number: 1745698972']"""
         data = self.file_read_to_list()
         new_id = int((data[-1][0].strip().split(':')[1])) + 1
         values = ['id', 'surname', 'name', 'patronymic', 'organisation', 'work_number', 'mobile_number']
@@ -42,7 +51,8 @@ class File_working:
 
         return formed_values
 
-    def create_new_user_as_questions(self):
+    def create_new_user_as_questions(self) -> {}:
+        """Creating user as with questions """
         data = self.file_read_to_list()
         new_id = int((data[-1][0].strip().split(':')[1])) + 1
         values = ['id', 'surname', 'name', 'patronymic', 'organisation', 'work_number', 'mobile_number']
@@ -55,6 +65,7 @@ class File_working:
         return formed_values
 
     def writing_to_file(self, value: {}):
+        """Writing dictionary to text file"""
         with open(self.file, 'a') as f:
             f.write('\n')
             for i in value.keys():
@@ -62,7 +73,8 @@ class File_working:
                 f.write(to_write_str)
             f.writelines('----------------------------')
 
-    def looking_for_data(self, dict:{}):
+    def looking_for_data(self, dict: {}) -> []:
+        """With entered  filter_dict search in parsed data. Returns [] that fits filter_dict. Example {id:1}"""
         data = self.file_read_to_list()
         values = ['id', 'surname', 'name', 'patronymic', 'organisation', 'work_number', 'mobile_number']
         req = []
@@ -92,6 +104,7 @@ class File_working:
         return res_for_find
 
     def readact_value(self, id):
+        """Overwrites text file with new data. Use id to find required contact"""
         data = self.file_read_to_list()
         str_to_find = f'id: {id}'
         what_to_redact = []
@@ -118,15 +131,14 @@ class File_working:
 
         id = int(id)
         new_data = data
-        del new_data[id-1]
+        del new_data[id - 1]
         new_data.insert(id - 1, redacted_mass)
         self.writing_redacted_file(new_data)
 
     def writing_redacted_file(self, lst: []):
+        """Writing to file using entered data """
         with open(self.file, 'w') as f:
             for i in lst:
                 for j in i:
-                    j = j+'\n'
+                    j = j + '\n'
                     f.write(j)
-
-
